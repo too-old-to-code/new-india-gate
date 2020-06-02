@@ -1,0 +1,537 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "employee"
+    identifier_field: name
+    label: "Employee"
+    folder: "src/pages/employees"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "profile",
+        }
+      - { label: Image, name: image, widget: image }
+      - { label: Name, name: name, widget: string }
+      - { label: Blurb, name: blurb, widget: text }
+      - { label: Position, name: position, widget: string }
+      - { label: Thumbnail, name: thumbnail, widget: image }
+      - { label: Body, name: body, widget: markdown }
+  - name: "settings"
+    label: "Settings"
+    files:
+      #########################################
+      #                                       #
+      #         GLOBAL SITE DATA PAGE         #
+      #                                       #
+      #########################################
+      - file: "src/data/site-data.md"
+        label: "Site Info"
+        name: "siteInfo"
+        fields:
+          - {
+              label: "Social Media",
+              name: "socialmedia",
+              widget: "list",
+              field: { label: URL, name: url, widget: string },
+            }
+          - {
+              label: "Address Line",
+              name: "addressLine",
+              widget: "list",
+              field: { label: Line, name: line, widget: string },
+            }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone Number", name: "phoneNumber", widget: "string" }
+          - {
+              label: Badges,
+              name: badges,
+              widget: list,
+              field: { label: Badge, name: badge, widget: image },
+            }
+  - name: "pages"
+    label: "Pages"
+    files:
+      #########################################
+      #                                       #
+      #              HOME PAGE                #
+      #                                       #
+      #########################################
+      - file: "src/pages/index.md"
+        label: "Home page"
+        name: "index-page"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "index-page",
+            }
+          - {
+              label: Main Image,
+              name: mainImage,
+              widget: object,
+              fields:
+                [
+                  { label: Description, name: description, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: string
+                  },
+                  { label: Call to Action, name: callToAction, widget: string },
+                  {
+                    label: Desktop,
+                    name: desktop,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        }
+
+                      ],
+                  },
+                  {
+                    label: Mobile,
+                    name: mobile,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        }
+
+                      ],
+                  },
+                ],
+            }
+
+          - {
+              label: Introduction,
+              name: introduction,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [{ label: Paragraph, name: paragraph, widget: text }],
+                  },
+                ],
+            }
+          - {
+              label: "Bullet Points",
+              name: bulletPoints,
+              widget: object,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  {
+                    label: List,
+                    name: list,
+                    widget: list,
+                    fields: [{ label: Item, name: item, widget: string }],
+                  },
+                ],
+            }
+          - {
+              label: CategoryPitch,
+              name: categorypitch,
+              widget: list,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  { label: Text, name: text, widget: text },
+                  { label: Image, name: image, widget: image },
+                ],
+            }
+      #########################################
+      #                                       #
+      #            ABOUT US PAGE              #
+      #                                       #
+      #########################################
+      - file: "src/pages/about-us.md"
+        label: "About us page"
+        name: "about-us-page"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "about-us-page",
+            }
+          - {
+              label: Main Image,
+              name: mainImage,
+              widget: object,
+              fields:
+                [
+                  { label: Description, name: description, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Words, name: words, widget: string },
+                        { label: Animate, name: animate, widget: boolean },
+                        {
+                          label: Animation,
+                          name: animation,
+                          widget: select,
+                          options: ["slide", "fade"],
+                        },
+                        { label: Words color, name: color, widget: string },
+                      ],
+                  },
+                  {
+                    label: Desktop,
+                    name: desktop,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                      ],
+                  },
+                  {
+                    label: Mobile,
+                    name: mobile,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Introduction,
+              name: introduction,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [{ label: Paragraph, name: paragraph, widget: text }],
+                  },
+                ],
+            }
+          - {
+              label: Our Team,
+              name: ourTeam,
+              widget: object,
+              fields:
+                [
+                  { label: Section text, name: sectionText, widget: string },
+                  { label: Heading, name: heading, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [{ label: Paragraph, name: paragraph, widget: text }],
+                  },
+                ],
+            }
+      #########################################
+      #                                       #
+      #            OUR SERVICES PAGE          #
+      #                                       #
+      #########################################
+      - file: "src/pages/our-services.md"
+        label: "Our services page"
+        name: "our-services-page"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "about-us-page",
+            }
+          - {
+              label: Main Image,
+              name: mainImage,
+              widget: object,
+              fields:
+                [
+                  { label: Description, name: description, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Words, name: words, widget: string },
+                        { label: Animate, name: animate, widget: boolean },
+                        {
+                          label: Animation,
+                          name: animation,
+                          widget: select,
+                          options: ["slide", "fade"],
+                        },
+                        { label: Words color, name: color, widget: string },
+                      ],
+                  },
+                  {
+                    label: Desktop,
+                    name: desktop,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                      ],
+                  },
+                  {
+                    label: Mobile,
+                    name: mobile,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Introduction,
+              name: introduction,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [{ label: Paragraph, name: paragraph, widget: text }],
+                  },
+                ],
+            }
+      #########################################
+      #                                       #
+      #            OUR ClIENTS PAGE           #
+      #                                       #
+      #########################################
+      - file: "src/pages/our-clients.md"
+        label: "Our clients page"
+        name: "our-clients-page"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "our-clients-page",
+            }
+          - {
+              label: Main Image,
+              name: mainImage,
+              widget: object,
+              fields:
+                [
+                  { label: Description, name: description, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Words, name: words, widget: string },
+                        { label: Animate, name: animate, widget: boolean },
+                        {
+                          label: Animation,
+                          name: animation,
+                          widget: select,
+                          options: ["slide", "fade"],
+                        },
+                        { label: Words color, name: color, widget: string },
+                      ],
+                  },
+                  {
+                    label: Desktop,
+                    name: desktop,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                      ],
+                  },
+                  {
+                    label: Mobile,
+                    name: mobile,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Introduction,
+              name: introduction,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [{ label: Paragraph, name: paragraph, widget: text }],
+                  },
+                ],
+            }
