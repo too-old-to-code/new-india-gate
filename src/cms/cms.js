@@ -2,9 +2,7 @@ import CMS from "netlify-cms-app"
 import React, { useState, useEffect } from "react"
 import { StyleSheetManager, ThemeProvider } from "styled-components"
 import IndexPagePreview from "./preview-templates/IndexPagePreview"
-import AboutUsPagePreview from "./preview-templates/AboutUsPagePreview"
-import OurServicesPagePreview from "./preview-templates/OurServicesPagePreview"
-import OurClientsPagePreview from "./preview-templates/OurClientsPagePreview"
+
 
 import { theme } from "../theme"
 
@@ -34,20 +32,4 @@ CMS.registerPreviewTemplate("index-page", props => (
   </StylesheetInjector>
 ))
 
-CMS.registerPreviewTemplate("about-us-page", props => (
-  <StylesheetInjector>
-    <AboutUsPagePreview {...props} />
-  </StylesheetInjector>
-))
 
-CMS.registerPreviewTemplate("our-services-page", props => (
-  <StylesheetInjector>
-    <OurServicesPagePreview {...props} />
-  </StylesheetInjector>
-))
-
-CMS.registerPreviewTemplate("our-clients-page", props => (
-  <StylesheetInjector>
-    <OurClientsPagePreview {...props} />
-  </StylesheetInjector>
-))

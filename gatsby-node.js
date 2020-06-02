@@ -17,11 +17,6 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               templateKey
-              profiles {
-                name
-                position
-                blurb
-              }
             }
           }
         }
