@@ -11,29 +11,16 @@ mainImage:
     xPos: 50
     yPos: 50
   callToAction: See Our Menu
-  text:
-    - words: India Gate Restaurant
-      animate: true
-      animation: slide
-      color: "#FDFFA7"
-
+  text: India Gate Restaurant
 introduction:
-  heading: Insurance professionals offering a truly personal service
+  heading: "Welcome to The India Gate "
   text:
-    - paragraph: As one of the most respected and trusted independent insurance
-        brokers based in Newport, South Wales we have been providing our clients
-        with the highest levels of service and expertise for over 35 years. As
-        commercial specialists, whatever your business, our highly trained team
-        will get it fully covered. We provide a personal service with the same
-        consultant working with you throughout the entire process. We search the
-        market for the best premiums to ensure you get the most out of your
-        insurance.
-    - paragraph: As specialists in commercial insurance we can offer the care and
-        technical expertise your business needs to ensure it is always fully
-        covered. Our extensive relationships with the major insurers, as well as
-        the more specialist providers, means that we can provide you with the
-        highest possible levels of cover at the most competitive prices. We also
-        provide for the personal insurance needs of our commercial clients.
+    - paragraph: Welcome to India Gate, located at the heart of Whitchurch village in
+        Cardiff. In celebration of it's 25th year, the India Gate is one of
+        Cardiff's oldest and most successful family owned restaurants.
+        Established by the Rahman family in 1987 much of the India Gate's
+        achievements are to credit of Harunur Rahman, who has been the driving
+        force behind the popularity of the India Gate.
 bulletPoints:
   title: Why choose us?
   list:
