@@ -3,15 +3,12 @@ import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
 import { AppParallaxText } from "../components/parallax-image-text"
 import {
-  CheckerDuo,
-  PopIn,
   FlexBox,
   Heading,
   PreviewSafeImage,
 } from "@custom-lib"
 import styled from "styled-components"
 import { AppParallax } from "../components/app-parallax"
-import { AppTextWithBullets } from "../components/app-text-with-bullets"
 import Img from 'gatsby-image'
 
 const MarginOnMobile = styled.div`
@@ -20,7 +17,7 @@ const MarginOnMobile = styled.div`
   }
 `
 
-const TextOnStroke = ({image}) => {
+const TextOnStroke = ({image, text}) => {
   return (
     <div css={`
       position: relative;
@@ -45,7 +42,7 @@ const TextOnStroke = ({image}) => {
         color: #FDFFA7;
         // text-shadow: 1px 1px black, 1px -1px black, -1px 1px black, -1px -1px black;
 
-      `}>India Gate Restaurant</h1>
+      `}>{text}</h1>
     </div>
   )
 }
@@ -83,8 +80,6 @@ const CallToAction = styled(Link)`
 export const IndexPageTemplate = ({
   mainImage,
   intro,
-  categoryPitches,
-  bulletPoints,
   brush
 }) => {
   console.log(brush)
@@ -92,52 +87,16 @@ export const IndexPageTemplate = ({
     <React.Fragment>
       <AppParallax mainImage={mainImage}>
       <InnerContainer>
-          <TextOnStroke image={brush}/>
+          <TextOnStroke image={brush} text={mainImage.title}/>
           </InnerContainer>
 
         <InnerContainer>
           <CallToAction to="/contact-us">{mainImage.callToAction}</CallToAction>
         </InnerContainer>
       </AppParallax>
-      <AppTextWithBullets intro={intro} bulletPoints={bulletPoints} />
+      <h1>{intro.heading}</h1>
+      <p>{intro?.text?.[0].paragraph}</p>
 
-      {categoryPitches &&
-        categoryPitches.map((pitch, index) => {
-          return (
-            <MarginOnMobile key={pitch.title}>
-              <CheckerDuo
-                image={
-                  <PreviewSafeImage
-                    image={pitch.image}
-                    alt={pitch.title}
-                    position={[50, 50]}
-                  />
-                }
-                height="350px"
-                textPosition={index % 2 === 0 ? "right" : "left"}
-                backgroundColor="rgba(50,70,80, .85)"
-              >
-                <FlexBox
-                  verticalPad="50"
-                  horizontalPad="40"
-                  style={{ color: "var(--not-quite-white)" }}
-                >
-                  <PopIn>
-                    <div style={{ maxWidth: "400px" }}>
-                      <Heading
-                        as="h2"
-                        style={{ margin: 0, color: "var(--not-quite-white)" }}
-                      >
-                        {pitch.title}
-                      </Heading>
-                      <p>{pitch.text}</p>
-                    </div>
-                  </PopIn>
-                </FlexBox>
-              </CheckerDuo>
-            </MarginOnMobile>
-          )
-        })}
     </React.Fragment>
   )
 }
@@ -149,8 +108,6 @@ const IndexPage = ({ data }) => {
     <IndexPageTemplate
       mainImage={frontmatter.mainImage}
       intro={frontmatter.introduction}
-      categoryPitches={frontmatter.categorypitch}
-      bulletPoints={frontmatter.bulletPoints}
       brush={data.brush}
     />
   )
@@ -170,8 +127,6 @@ export const PageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       ...MainImageFields
       ...IntroFields
-      ...CategorypitchFields
-      ...BulletPointsFields
     }
   }
 `

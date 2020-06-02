@@ -162,18 +162,15 @@ const Layout = ({ children, pageContext }) => {
       <ScreenClassProvider>
         <Controller>
           <Scene
-            classToggle="second-color"
-            triggerHook="0"
-            offset={pageContext.special ? "-50px" : "50px"}
           >
-            {progress => (
               <div>
                 <Navbar
                   style={{
-                    boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.125)",
+                    // boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.125)",
                     letterSpacing: "1px",
                     paddingRight: "30px",
                     fontSize: "1em",
+
                   }}
                   burgerMenuStyle="spin"
                   burgerMenuIsActive={burgerMenuIsActive}
@@ -190,7 +187,6 @@ const Layout = ({ children, pageContext }) => {
                   </NavbarLayoutMulti>
                 </Navbar>
               </div>
-            )}
           </Scene>
         </Controller>
         {children}

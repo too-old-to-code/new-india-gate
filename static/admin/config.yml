@@ -147,32 +147,6 @@ collections:
                   },
                 ],
             }
-          - {
-              label: "Bullet Points",
-              name: bulletPoints,
-              widget: object,
-              fields:
-                [
-                  { label: Title, name: title, widget: string },
-                  {
-                    label: List,
-                    name: list,
-                    widget: list,
-                    fields: [{ label: Item, name: item, widget: string }],
-                  },
-                ],
-            }
-          - {
-              label: CategoryPitch,
-              name: categorypitch,
-              widget: list,
-              fields:
-                [
-                  { label: Title, name: title, widget: string },
-                  { label: Text, name: text, widget: text },
-                  { label: Image, name: image, widget: image },
-                ],
-            }
       #########################################
       #                                       #
       #            ABOUT US PAGE              #

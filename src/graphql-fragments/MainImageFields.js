@@ -4,12 +4,7 @@ export const mainImageFields = graphql`
   fragment MainImageFields on MarkdownRemark {
     frontmatter {
       mainImage {
-        text {
-          words
-          animate
-          animation
-          color
-        }
+        title
         callToAction
         description
         desktop {
